@@ -48,6 +48,11 @@ public class ApiServiceImpl implements ApiService {
         return Response.ok().entity(countries).build();
     }
 
+    @Override
+    public Response getErrorResponse() {
+        return Response.status(500).build();
+    }
+
     public List<CustomCountryModel> getAllCountries(){
         return countryModelRespository.listAll();
     }

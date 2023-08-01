@@ -1,22 +1,62 @@
 
-# Usage Guide
-### Installation / Startup
-1. Install project aemx-apicontract ([ view aemx-apicontract)](https://github.com/Aurazor/Aemx_apicontract))
-2. Install this project using: **mvn clean**
-3. Run the project with: **mvn quarkus:dev**
-4. Start docker and run command: **docker run -ti --rm -p 27017:27017 mongo:4.4**
+# AEMX-QUARKUS
+## Intro
+This is an application that provides REST API endpoints using the Quarkus framework and Mongo DB for storing data. These endpoints are consumed by aemx-angular project in Adobe Experience Manager (AEM) to be displayed within AEM components in Angular. The application also utilizes the aemx-apicontract project which generates the PersonApi interface and models for person endpoints.
 
-### Endpoints
-#### Country REST
-*  **GET** request (retrieves list of all countries): http://localhost:8080/country
-* **POST** request (add a new country): http://localhost:8080/country
-    * Body : {"name": "Mauritius", "code": "mur","image": "https://mauritius.png"}
-* **PUT** request (update a country); http://localhost:8080/country
-    * Body : {"name": "Mauritius", "code": "mur","image": "https://mauritius-1.png"}
-* **DELETE** request (Delete a country); http://localhost:8080/country
-    * Body : "Mauritius"
+### Key Features:
 
-#### Person REST
-*  **GET** request (retrieves list of all person): http://localhost:8080/person
-* **POST** request (add a new person): http://localhost:8080/person
-    * Body : {"firstName": "string","lastName": "string"}
+* Exposes RESTful endpoints for country and person related resources.
+* Integration with the "aemx-angular" project in AEM for data display in Angular components using REST.
+* Utilizes the "aemx-apicontract" project for generating the "PersonApi" interface and models.
+* Uses mongo-db for storing data
+
+### Usage Guide
+* Install project aemx-apicontract ([ view aemx-apicontract)](https://github.com/Aurazor/Aemx_apicontract))
+* Install this project
+
+       mvn clean install
+* Start docker and run command:
+
+       docker run -ti --rm -p 27017:27017 mongo:4.4
+* Run the project
+
+       mvn quarkus:dev
+
+## ENDPOINTS
+### Country API
+#### GET (retrieves list of countries)
+     curl --location 'http://localhost:8080/country'
+#### POST (add new country)
+    curl --location 'http://localhost:8080/country' 
+    --header 'Content-Type: application/json' 
+    --data '{
+        "name": "Mauritius",
+        "code": "mur",
+        "image": "https://mauritius.png"
+    }'
+
+#### PUT (modify existing country)
+    curl --location --request PUT 'http://localhost:8080/country' 
+    --header 'Content-Type: application/json' 
+    --data '{
+            "name": "Mauritius",
+            "code": "code-mur",
+            "image": "https://mauritius1.png"
+        }'
+
+#### DELETE (remove country)
+    curl --location --request DELETE 'http://localhost:8080/country' \
+    --header 'Content-Type: text/plain' \
+    --data 'Mauritius'
+
+### Persons API
+### GET (get persons)
+    curl --location 'http://localhost:8080/person'
+### POST (add person)
+    curl --location 'http://localhost:8080/person' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "firstName": "Nikhil",
+        "lastName": "Aukhaj"
+    }'
+
