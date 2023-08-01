@@ -4,24 +4,24 @@ import com.nikhilaukhaj.aemx.models.CustomCountryModel;
 import com.nikhilaukhaj.aemx.services.CsvReaderService;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.resource.spi.ConfigProperty;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationScoped
 public class CsvReaderServiceImpl implements CsvReaderService {
-    @ConfigProperty(defaultValue = "countries.location")
-    String countriesFileLocation;
+    @ConfigProperty(name = "countries.csv.location", defaultValue = "/test.csv")
+    String countriesCsvFileLocation;
     private final String COMMA_DELIMETER = ",";
 
     @Override
     public List<CustomCountryModel> getCountriesFromCsv() throws IOException {
         List<CustomCountryModel> countries = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(countriesFileLocation))){
+        InputStream inputStream = CsvReaderServiceImpl.class.getResourceAsStream(countriesCsvFileLocation);
+
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))){
             String line;
             while((line = br.readLine()) != null) {
                 String[] values = line.split(COMMA_DELIMETER);
