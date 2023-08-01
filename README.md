@@ -1,10 +1,10 @@
 
 # Usage Guide
 ### Installation / Startup
-1. Install project aemx-apicontract (view project for installation guide)
+1. Install project aemx-apicontract ([ view aemx-apicontract)](https://github.com/Aurazor/Aemx_apicontract))
 2. Install this project using: **mvn clean**
-3. Run the project with **mvn quarkus:dev**
-4. Start docker and run command **docker run -ti --rm -p 27017:27017 mongo:4.4**
+3. Run the project with: **mvn quarkus:dev**
+4. Start docker and run command: **docker run -ti --rm -p 27017:27017 mongo:4.4**
 
 ### Endpoints
 #### Country REST
