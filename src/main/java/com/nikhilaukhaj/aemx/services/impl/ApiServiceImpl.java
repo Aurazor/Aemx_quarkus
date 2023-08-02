@@ -49,8 +49,13 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
-    public Response getErrorResponse() {
-        return Response.status(500).build();
+    public Response getErrorResponse(String message) {
+        return Response.status(500).entity(message).build();
+    }
+
+    @Override
+    public Response getOkResponse(Object entity) {
+        return Response.ok().entity(entity).build();
     }
 
     public List<CustomCountryModel> getAllCountries(){

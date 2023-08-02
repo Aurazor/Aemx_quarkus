@@ -9,5 +9,6 @@ public interface ApiService {
    Response addCountry(CustomCountryModel customCountryModel);
    Response updateCountry(CustomCountryModel customCountryModel);
    Response deleteCountry(String countryName);
-   public Response getErrorResponse();
+   public Response getErrorResponse(String message);
+   public Response getOkResponse(Object entity);
 }

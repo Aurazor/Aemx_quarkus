@@ -16,6 +16,7 @@ public class PersonServiceImpl implements PersonService {
         PersonDetailsFull personDetailsFull = new PersonDetailsFull();
         personDetailsFull.setFirstName(personDetails.getFirstName());
         personDetailsFull.setLastName(personDetails.getLastName());
+        personDetailsFull.setImageUrl(personDetails.getImageUrl());
         return personDetailsFull;
     }
 }
