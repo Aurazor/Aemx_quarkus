@@ -1,7 +1,7 @@
 
 # AEMX-QUARKUS
 ## Intro
-This is an application that provides REST API endpoints using the Quarkus framework and Mongo DB for storing data. These endpoints are consumed by aemx-angular project in Adobe Experience Manager (AEM) to be displayed within AEM components in Angular. The application also utilizes the aemx-apicontract project which generates the PersonApi interface and models for person endpoints.
+This is an application that provides REST API endpoints and support file uploads using the Quarkus framework and Mongo DB for storing data. These endpoints are consumed by aemx-angular project in Adobe Experience Manager (AEM) to be displayed within AEM components in Angular. The application also utilizes the aemx-apicontract project which generates the PersonApi interface and models for person endpoints.
 
 ### Key Features:
 
@@ -9,6 +9,7 @@ This is an application that provides REST API endpoints using the Quarkus framew
 * Integration with the "aemx-angular" project in AEM for data display in Angular components using REST.
 * Utilizes the "aemx-apicontract" project for generating the "PersonApi" interface and models.
 * Uses mongo-db for storing data
+* Allows CSV file upload for adding data to the system.
 
 ### Usage Guide
 * Install project aemx-apicontract ([ view aemx-apicontract)](https://github.com/Aurazor/Aemx_apicontract))
